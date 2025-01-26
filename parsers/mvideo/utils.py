@@ -19,9 +19,6 @@ def search_location(city: str, headers: dict[str, Any] = default_headers()) -> C
     """
     Поиск id города по его названию. Если найдено полное соответствие, то возвращается словарь, иначе None.
     Сравнение названий в верхнем регистре.
-
-    Пример:
-        search_location("Калининград") -> {'name': 'Калининград', 'id': 'CityR_146'}
     """
     response = fetch(
         "https://www.mvideo.ru/bff/region/searchLocation",
