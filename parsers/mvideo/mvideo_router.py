@@ -10,7 +10,7 @@ from .config import default_headers
 from ..settings import settings
 
 
-router = APIRouter(prefix=settings.api_v1_prefix + "/mvideo", tags=["MVideo"])
+router = APIRouter(prefix=settings.api.v1.mvideo_prefix, tags=["MVideo"])
 
 
 @router.post("/search")
