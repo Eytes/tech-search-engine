@@ -1,6 +1,7 @@
-from typing import Any
+from typing import Any, Annotated
 
 import requests
+from fastapi import Body, Depends
 
 from .config import default_headers
 from .schemas import City
@@ -15,7 +16,10 @@ def fetch(
     return requests.get(url=url, headers=headers, cookies=cookies, params=params).json()
 
 
-def search_location(city: str, headers: dict[str, Any] = default_headers()) -> City | None:
+def search_location(
+    city: Annotated[str, Body()],
+    headers: Annotated[dict[str, Any], Depends(default_headers)],
+) -> City | None:
     """
     Поиск id города по его названию. Если найдено полное соответствие, то возвращается словарь, иначе None.
     Сравнение названий в верхнем регистре.

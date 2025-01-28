@@ -15,8 +15,8 @@ router = APIRouter(prefix=settings.api.v1.mvideo_prefix, tags=["MVideo"])
 
 @router.post("/search")
 def search(
-    query: str = Annotated[str, Body()],
-    city: City = Annotated[City, Depends(search_location)],
+    query: Annotated[str, Body()],
+    city: Annotated[City, Depends(search_location)],
     headers: dict[str, Any] = default_headers(),
     offset: int = 0,
     limit: int = 50,
